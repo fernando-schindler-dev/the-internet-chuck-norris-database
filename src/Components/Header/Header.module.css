@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  min-height: calc(2.25rem + 2rem);
+  align-items: center;
+  justify-content: center;
+}
+.menu > button + button {
+  margin-left: 2rem;
+}
