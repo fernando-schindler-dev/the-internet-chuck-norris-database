@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid: auto / auto;
+  gap: 2.5rem;
+  justify-content: left;
+}
+.label {
+  margin-bottom: 0.5rem;
+  color: rgba(0, 0, 0, 0.54);
+}
+.fullName div + div {
+  margin-left: 0.5rem;
+}
