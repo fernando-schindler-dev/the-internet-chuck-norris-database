@@ -19,9 +19,11 @@ const RadioForm = ({ legend, values, radio, setRadio }) => (
       >
         {values.map((value) => (
           <FormControlLabel
+            key={value}
             value={value}
             control={<Radio color="primary" />}
             label={value}
+            style={{ marginBottom: '-10px' }}
           />
         ))}
       </RadioGroup>
