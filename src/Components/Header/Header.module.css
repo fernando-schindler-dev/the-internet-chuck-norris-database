@@ -4,6 +4,6 @@
   align-items: center;
   justify-content: center;
 }
-.menu > button + button {
-  margin-left: 2rem;
+.button {
+  margin-right: 1rem;
 }

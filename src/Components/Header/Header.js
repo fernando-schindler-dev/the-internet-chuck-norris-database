@@ -6,19 +6,23 @@ import styles from './Header.module.css';
 const Header = () => (
   <AppBar color="default" className={styles.header}>
     <nav className={styles.menu}>
-      <Button variant="contained" color="primary">
-        <NavLink to="/" end>
+      <NavLink to="/" end className={styles.button}>
+        <Button variant="contained" color="primary" size="large">
           Início
-        </NavLink>
-      </Button>
+        </Button>
+      </NavLink>
 
-      <Button variant="contained" color="default">
-        <NavLink to="/piadas">Piadas</NavLink>
-      </Button>
+      <NavLink to="/piadas" className={styles.button}>
+        <Button variant="contained" color="default" size="large">
+          Piadas
+        </Button>
+      </NavLink>
 
-      <Button variant="contained" color="default">
-        <NavLink to="/sobre">Sobre</NavLink>
-      </Button>
+      <NavLink to="/sobre">
+        <Button variant="contained" color="default" size="large">
+          Sobre
+        </Button>
+      </NavLink>
     </nav>
   </AppBar>
 );
