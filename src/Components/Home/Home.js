@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import { Button, Card, CardContent } from '@material-ui/core';
 import RadioForm from '../Form/RadioForm/RadioForm';
 import InputForm from '../Form/InputForm/InputForm';
 import CheckboxForm from '../Form/CheckboxForm/CheckboxForm';
@@ -39,66 +39,74 @@ const Home = () => {
   }, []);
 
   return (
-    <section className={styles.container}>
-      <RadioForm
-        legend="Usar Chuck Norris como nome padrão?"
-        values={useDefaultName}
-        radio={defaultName}
-        setRadio={setDefaultName}
-      ></RadioForm>
+    <section className={`${styles.container} animeLeft`}>
+      <div className={styles.form}>
+        <RadioForm
+          legend="Usar Chuck Norris como nome padrão?"
+          values={useDefaultName}
+          radio={defaultName}
+          setRadio={setDefaultName}
+        ></RadioForm>
 
-      {defaultName === 'Não' && (
-        <div>
-          <p className={styles.label}>
-            Então, por favor, digite o nome completo desejado:
-          </p>
-          <div className={styles.fullName}>
-            <InputForm
-              label="Nome"
-              type="text"
-              value={name}
-              setValue={setName}
-            />
-            <InputForm
-              label="Sobrenome"
-              type="text"
-              value={lastName}
-              setValue={setLastName}
-            />
+        {defaultName === 'Não' && (
+          <div>
+            <p className={styles.label}>
+              Então, por favor, digite o nome completo desejado:
+            </p>
+            <div className={styles.fullName}>
+              <InputForm
+                label="Nome"
+                type="text"
+                value={name}
+                setValue={setName}
+              />
+              <InputForm
+                label="Sobrenome"
+                type="text"
+                value={lastName}
+                setValue={setLastName}
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      <InputForm
-        label="Número de piadas"
-        type="number"
-        value={numberOfJokes}
-        setValue={setNumberOfJokes}
-      />
-
-      <div>
-        <CheckboxForm
-          legend="Selecione as categorias desejadas:"
-          apiCategories={apiCategories}
-          categories={categories}
-          setCategories={setCategories}
+        <InputForm
+          label="Número de piadas"
+          type="number"
+          value={numberOfJokes}
+          setValue={setNumberOfJokes}
         />
+
+        <div>
+          <CheckboxForm
+            legend="Selecione as categorias desejadas:"
+            apiCategories={apiCategories}
+            categories={categories}
+            setCategories={setCategories}
+          />
+        </div>
+
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          onClick={pullJokes}
+        >
+          GERAR PIADAS
+        </Button>
       </div>
 
-      <Button
-        variant="contained"
-        color="primary"
-        size="large"
-        onClick={pullJokes}
-      >
-        GERAR PIADAS
-      </Button>
-
-      <div>
-        {jokes.map((joke) => (
-          <div key={joke.value.joke}>{joke.value.joke}</div>
-        ))}
-      </div>
+      <Card className={styles.jokes}>
+        <CardContent
+          style={{ background: '#f5f5f5', padding: '2rem', width: '100%' }}
+        >
+          {jokes.map((joke) => (
+            <div className={`${styles.joke} anime`} key={joke.value.joke}>
+              {joke.value.joke}
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </section>
   );
 };
