@@ -23,5 +23,5 @@
   text-align: justify;
 }
 .jokes .joke + .joke {
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
