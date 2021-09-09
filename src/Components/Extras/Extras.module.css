@@ -1,0 +1,49 @@
+.container .accordion + .accordion {
+  margin-top: 0.5rem;
+}
+.accordion {
+  background: #3f51b5 !important;
+  color: #fff !important;
+}
+.title {
+  font-weight: bold !important;
+  font-size: 1.125rem !important;
+}
+
+.details {
+  display: flex;
+  width: 100%;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+.numberOfJokes {
+  display: grid;
+  margin-bottom: 0.25rem;
+  background: #fff !important;
+}
+.error {
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  color: #ff0;
+}
+
+.output {
+  flex: 3;
+  margin-left: 2rem;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 43.75rem) {
+  .details {
+    flex-direction: column;
+  }
+  .output {
+    margin: 1rem 0 0 0;
+  }
+}
