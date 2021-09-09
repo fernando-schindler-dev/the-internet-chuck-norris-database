@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardContent } from '@material-ui/core';
+import { Button, Card, CardContent, CircularProgress } from '@material-ui/core';
 import RadioForm from '../Form/RadioForm/RadioForm';
 import InputForm from '../Form/InputForm/InputForm';
 import CheckboxForm from '../Form/CheckboxForm/CheckboxForm';
@@ -20,8 +20,11 @@ const Home = () => {
   const [categories, setCategories] = React.useState([]);
   const [errorCategories, setErrorCategories] = React.useState(false);
   const [jokes, setJokes] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
 
   const pullJokes = async () => {
+    setLoading(true);
+
     const fullName = `?firstName=${name}&lastName=${lastName}`;
 
     let responses = [];
@@ -39,6 +42,8 @@ const Home = () => {
     }
     responses.map((result) => result.value.joke);
     setJokes(responses);
+
+    setLoading(false);
   };
 
   const validateFields = () => {
@@ -148,13 +153,24 @@ const Home = () => {
 
       <Card className={styles.jokes}>
         <CardContent
-          style={{ background: '#f5f5f5', padding: '2rem', width: '100%' }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            width: '100%',
+            padding: '2rem',
+            background: '#f5f5f5',
+          }}
         >
-          {jokes.map((joke) => (
-            <div className={`${styles.joke} anime`} key={joke.value.joke}>
-              {joke.value.joke}
-            </div>
-          ))}
+          {loading ? (
+            <CircularProgress style={{ margin: '0 auto' }} />
+          ) : (
+            jokes.map((joke) => (
+              <div className={`${styles.joke} anime`} key={joke.value.joke}>
+                {joke.value.joke}
+              </div>
+            ))
+          )}
         </CardContent>
       </Card>
     </section>
