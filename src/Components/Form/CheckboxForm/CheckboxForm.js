@@ -21,25 +21,27 @@ const CheckboxForm = ({ legend, apiCategories, categories, setCategories }) => {
 
   return (
     <>
-      <FormControl component="fieldset">
-        <FormLabel component="legend">{legend}</FormLabel>
-        {apiCategories.map((value) => (
-          <FormControlLabel
-            key={value}
-            value={value}
-            control={
-              <Checkbox
-                checked={handleChecked(value)}
-                onChange={handleChange}
-                name={value}
-                color="primary"
-              />
-            }
-            label={value}
-            style={{ marginBottom: '-10px' }}
-          />
-        ))}
-      </FormControl>
+      {apiCategories && (
+        <FormControl component="fieldset">
+          <FormLabel component="legend">{legend}</FormLabel>
+          {apiCategories.map((value) => (
+            <FormControlLabel
+              key={value}
+              value={value}
+              control={
+                <Checkbox
+                  checked={handleChecked(value)}
+                  onChange={handleChange}
+                  name={value}
+                  color="primary"
+                />
+              }
+              label={value}
+              style={{ marginBottom: '-10px' }}
+            />
+          ))}
+        </FormControl>
+      )}
     </>
   );
 };

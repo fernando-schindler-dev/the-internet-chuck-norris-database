@@ -1,21 +1,42 @@
 import React from 'react';
-import { Button, Checkbox } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import RadioForm from '../Form/RadioForm/RadioForm';
 import InputForm from '../Form/InputForm/InputForm';
 import CheckboxForm from '../Form/CheckboxForm/CheckboxForm';
+import pull from '../../Helper/Fetch/Fetch';
 import styles from './Home.module.css';
 
 const Home = () => {
-  const [defaultName, setDefaultName] = React.useState('Sim');
   const useDefaultName = ['Sim', 'Não'];
+  const [apiCategories, setApiCategories] = React.useState([]);
 
+  const [defaultName, setDefaultName] = React.useState('Sim');
   const [name, setName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
-
   const [numberOfJokes, setNumberOfJokes] = React.useState(1);
-
   const [categories, setCategories] = React.useState([]);
-  const apiCategories = ['Teste 1', 'Teste 2'];
+  const [jokes, setJokes] = React.useState([]);
+
+  const pullJokes = async () => {
+    let responses = [];
+    const fetchs = [];
+    for (let i = 0; i < numberOfJokes; i += 1) {
+      responses.push(i);
+      fetchs.push(
+        await pull(
+          `http://api.icndb.com/jokes/random?limitTo=[${[...categories]}]`,
+        ),
+      );
+      responses = await Promise.all(fetchs);
+    }
+    responses.map((result) => result.value.joke);
+    setJokes(responses);
+  };
+
+  React.useEffect(async () => {
+    const jsonCategories = await pull('http://api.icndb.com/categories');
+    setApiCategories([...jsonCategories.value]);
+  }, []);
 
   return (
     <section className={styles.container}>
@@ -64,9 +85,20 @@ const Home = () => {
         />
       </div>
 
-      <Button variant="contained" color="primary" size="large">
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        onClick={pullJokes}
+      >
         GERAR PIADAS
       </Button>
+
+      <div>
+        {jokes.map((joke) => (
+          <div key={joke.value.joke}>{joke.value.joke}</div>
+        ))}
+      </div>
     </section>
   );
 };
