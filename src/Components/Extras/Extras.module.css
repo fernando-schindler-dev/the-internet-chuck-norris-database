@@ -38,3 +38,12 @@
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 43.75rem) {
+  .details {
+    flex-direction: column;
+  }
+  .output {
+    margin: 1rem 0 0 0;
+  }
+}
