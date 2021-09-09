@@ -10,22 +10,18 @@ const Header = () => {
     <AppBar color="default" className={styles.header}>
       <nav className={styles.menu}>
         <NavLink to="/" end className={styles.button}>
-          <Button
-            variant="contained"
-            color="primary"
-            size={matches ? 'small' : 'large'}
-          >
+          <Button variant="contained" size={matches ? 'small' : 'large'}>
             Início
           </Button>
         </NavLink>
 
-        <NavLink to="/piadas" className={styles.button}>
+        <NavLink to="/extras" className={styles.button}>
           <Button
             variant="contained"
             color="default"
             size={matches ? 'small' : 'large'}
           >
-            Piadas
+            Extras
           </Button>
         </NavLink>
 
