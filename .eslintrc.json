@@ -4,8 +4,8 @@
         "es2021": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb",
+        // "plugin:react/recommended",
+        "airbnb-base",
         "prettier"
     ],
     "parserOptions": {
@@ -19,5 +19,9 @@
         "react"
     ],
     "rules": {
+        "no-unused-vars": "off",
+        "no-await-in-loop":"off",
+        "no-unsafe-finally": "off",
+        "no-unused-expressions": "off"
     }
 }
