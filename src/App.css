@@ -12,7 +12,7 @@ a {
 body {
   max-width: 75rem;
   margin: 0 auto;
-  padding: 6.25rem 2rem 2rem 2rem;
+  padding: 6.25rem 2rem 6.75rem 2rem;
 }
 
 .active button {
@@ -40,5 +40,11 @@ body {
 @keyframes anime {
   to {
     opacity: 1;
+  }
+}
+
+@media (max-width: 23.75rem) {
+  body {
+    padding: 6.25rem 2rem 9.625rem 2rem;
   }
 }
