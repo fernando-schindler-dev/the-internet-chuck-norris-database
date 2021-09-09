@@ -17,6 +17,9 @@
 .fullName {
   display: flex;
 }
+.fullName > * {
+  flex: 1;
+}
 .fullName div + div {
   margin-left: 0.5rem;
 }
@@ -36,4 +39,22 @@
   margin-top: 0.5rem;
   font-size: 0.875rem;
   color: #f00;
+}
+
+@media (max-width: 61.5rem) {
+  .container {
+    grid: auto / 2fr 3fr;
+  }
+}
+
+@media (max-width: 52.5rem) {
+  .container {
+    grid: auto / 2fr 2fr;
+  }
+}
+
+@media (max-width: 43.5rem) {
+  .container {
+    grid: auto / 1fr;
+  }
 }
