@@ -1,11 +1,13 @@
 .container {
   display: grid;
   grid: auto / 1fr 2fr;
-  gap: 3rem;
   justify-content: left;
+  gap: 3rem;
 }
+
 .form {
   display: grid;
+  align-self: flex-start;
   gap: 2.5rem;
 }
 .label {
@@ -18,10 +20,20 @@
 .fullName div + div {
   margin-left: 0.5rem;
 }
+.numberOfJokes {
+  display: flex;
+  flex-direction: column;
+}
 .jokes {
   display: flex;
   text-align: justify;
 }
 .jokes .joke + .joke {
   margin-top: 2rem;
+}
+
+.error {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #f00;
 }
